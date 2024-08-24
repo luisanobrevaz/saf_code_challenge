@@ -40,6 +40,6 @@ class Product
   end
 
   def unit_tax
-    TaxCalculatorService.new(self).call
+    @unit_tax ||= TaxCalculatorService.new(self).call
   end
 end
