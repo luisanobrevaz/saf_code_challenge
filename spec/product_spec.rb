@@ -1,5 +1,5 @@
 require './product'
-require 'byebug'
+require './tax_calculator_service'
 
 RSpec.describe Product do
   let(:product) { described_class.new(item_description) }
@@ -73,6 +73,14 @@ RSpec.describe Product do
       it 'returns the correct category' do
         expect(product.category).to eq('unknown')
       end
+    end
+  end
+
+  describe 'total_tax' do
+    let(:item_description) { '2 CD at 10.00' }
+
+    it 'returns the tax' do
+      expect(product.total_tax).to eq(2.00)
     end
   end
 end

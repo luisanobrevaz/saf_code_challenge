@@ -19,6 +19,14 @@ class Product
     'unknown'
   end
 
+  def total_price
+    (base_price + unit_tax) * quantity
+  end
+
+  def total_tax
+    unit_tax * quantity
+  end
+
   private
 
   def category_options
@@ -29,7 +37,7 @@ class Product
     }
   end
 
-  def total_taxes
-
+  def unit_tax
+    TaxCalculatorService.new(self).call
   end
 end
