@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 require './tax_calculator_service'
 require './product'
-require 'byebug'
 
 RSpec.describe TaxCalculatorService do
   let(:call) { described_class.new(product).call }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Product
   def initialize(item)
     match = item.match(/(\d+)\s(.*)\sat\s([\d.]+)/)
@@ -31,9 +33,9 @@ class Product
 
   def category_options
     {
-      'food' => ['apple', 'orange', 'chocolate', 'fruit'],
+      'food' => %w[apple orange chocolate fruit],
       'book' => ['book'],
-      'medical' => ['seringe', 'pills', 'odometer']
+      'medical' => %w[seringe pills odometer]
     }
   end
 

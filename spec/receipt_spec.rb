@@ -1,6 +1,8 @@
-require './tax_calculator_service'
+# frozen_string_literal: true
+
 require './receipt'
 require './product'
+require './tax_calculator_service'
 
 RSpec.describe Receipt do
   let(:receipt) { described_class.new(file_path) }

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TaxCalculatorService
   def initialize(product)
     @product = product
@@ -5,14 +7,14 @@ class TaxCalculatorService
 
   def call
     total_taxes = product.base_price * total_tax_rate
-    round_up_to_nearest_05(total_taxes)
+    round_up_to_nearest05(total_taxes)
   end
 
   attr_accessor :product
 
   private
 
-  def round_up_to_nearest_05(number)
+  def round_up_to_nearest05(number)
     (number.round(2) * 20).ceil / 20.0
   end
 

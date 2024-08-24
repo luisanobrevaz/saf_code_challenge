@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Receipt
   def initialize(file_path)
     parsed_items = File.readlines(file_path).map(&:chomp)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './product'
 require './tax_calculator_service'
 
@@ -27,7 +29,7 @@ RSpec.describe Product do
       let(:item_description) { '12.49 for 2 books' }
 
       it 'raises an error' do
-        expect{ product } .to raise_error ArgumentError
+        expect { product }.to raise_error ArgumentError
       end
     end
 
