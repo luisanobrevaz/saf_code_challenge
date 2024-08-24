@@ -1,7 +1,6 @@
 require './product'
 require 'byebug'
 
-
 RSpec.describe Product do
   let(:product) { described_class.new(item_description) }
 
@@ -41,6 +40,38 @@ RSpec.describe Product do
 
       it 'sets imported as true' do
         expect(product.imported).to eq(true)
+      end
+    end
+  end
+
+  describe 'category' do
+    let(:item_description) { '2 book at 12.49' }
+
+    it 'returns the correct category' do
+      expect(product.category).to eq('book')
+    end
+
+    context 'when item is a box of pills' do
+      let(:item_description) { '1 packet of headache pills at 9.75' }
+
+      it 'returns the correct category' do
+        expect(product.category).to eq('medical')
+      end
+    end
+
+    context 'when item is a box of chocolate' do
+      let(:item_description) { '3 imported boxes of chocolates at 11.25' }
+
+      it 'returns the correct category' do
+        expect(product.category).to eq('food')
+      end
+    end
+
+    context 'when item does not have a category' do
+      let(:item_description) { '1 music CD at 14.99' }
+
+      it 'returns the correct category' do
+        expect(product.category).to eq('unknown')
       end
     end
   end
