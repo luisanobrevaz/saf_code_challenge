@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require './product'
 
 class Receipt
   def initialize(file_path)
