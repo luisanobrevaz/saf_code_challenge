@@ -24,7 +24,7 @@ ruby run.rb challenge_examples/input3.txt
 
 Running Tests
 -----------------------
-Specs are ran with rspec. Simply run rspec on your command line.
+Specs are ran with rspec.
 ```bash
 bundle exec rspec
 ```
