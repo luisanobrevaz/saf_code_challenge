@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require './product'
+
 class TaxCalculatorService
   def initialize(product)
     @product = product
