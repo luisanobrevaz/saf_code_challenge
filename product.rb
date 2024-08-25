@@ -1,26 +1,16 @@
 # frozen_string_literal: true
 
-require './tax_calculator_service'
+require './services/tax_calculator_service'
 
 class Product
-  def initialize(item)
-    match = item.match(/(\d+)\s(.*)\sat\s([\d.]+)/)
-    raise ArgumentError unless match
+  attr_accessor :name, :quantity, :base_price, :imported, :category
 
-    @quantity = match[1].to_i
-    @name = match[2]
-    @base_price = match[3].to_f
-    @imported = name.match?(/imported/)
-  end
-
-  attr_accessor :name, :quantity, :base_price, :imported
-
-  def category
-    category_options.find do |category_name, items|
-      return category_name if items.any? { |item| name.include?(item) }
-    end
-
-    'unknown'
+  def initialize(quantity:, name:, base_price:, imported:, category:)
+    @quantity = quantity
+    @name = name
+    @base_price = base_price
+    @imported = imported
+    @category = category
   end
 
   def total_price
@@ -32,14 +22,6 @@ class Product
   end
 
   private
-
-  def category_options
-    {
-      'food' => %w[apple orange chocolate fruit],
-      'book' => ['book'],
-      'medical' => %w[seringe pills odometer]
-    }
-  end
 
   def unit_tax
     @unit_tax ||= TaxCalculatorService.new(self).call
